@@ -37,13 +37,13 @@ rm acme.tar.gz
 
 ./acme.sh --set-default-ca --issue --server letsencrypt --home "./ssl" -d "$DYNV6_DNS" -d "*.$DYNV6_DNS" --dns dns_dynv6  --debug  --force
 
-fi
-
 curl -sSL -o ssl.sh  https://raw.githubusercontent.com/tusui-7/node/refs/heads/main/ssl.sh
 sed -i "s|HOME|$LOCAL_PATH|g" ssl.sh
 sed -i "s|TOKEN0|$DYNV6_TOKEN|g" ssl.sh
 sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" ssl.sh
 chmod +x "./ssl.sh"
+
+fi
 
 echo "acme is ok"
 
@@ -126,11 +126,12 @@ curl -sSL -o navidrome.tar.gz  https://github.com/navidrome/navidrome/releases/d
 tar -zxvf navidrome.tar.gz
 chmod +x navidrome
 rm navidrome.tar.gz
-fi
 
 curl -sSL -o navidrome.toml  https://raw.githubusercontent.com/tusui-7/node/refs/heads/main/navidrome.toml
 sed -i "s|HOME|$LOCAL_PATH|g" navidrome.toml
 #sed -i "s|4533|$PORT|g" navidrome.toml
+
+fi
 
 
 #navidrome.conf
