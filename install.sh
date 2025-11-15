@@ -338,7 +338,7 @@ echo "$EXE_NAME is ok"
 function  HBBR()
 {
 
-EXE_NAME="easytier"
+EXE_NAME="hbbr"
 cd  "$LOCAL_PATH/"
 if grep -q "$EXE_NAME" "$INDEX_JS"; then
 echo "Found $EXE_NAME"
