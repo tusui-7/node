@@ -138,6 +138,10 @@ if [ -d "$LOCAL_PATH/bin/nginx/conf/conf.d" ];then
 
 cd "$LOCAL_PATH/bin/nginx/conf/conf.d"
 curl -sSL -o navidrome.conf  https://raw.githubusercontent.com/tusui-7/node/refs/heads/main/conf.d/navidrome.conf
+sed -i "s|HOME|$LOCAL_PATH|g" "navidrome.conf"
+sed -i "s|443|$PORT|g"        "navidrome.conf"
+sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" "navidrome.conf"
+
 
 fi
 
@@ -181,6 +185,10 @@ fi
 if [ -d "$LOCAL_PATH/bin/nginx/conf/conf.d" ];then
 cd "$LOCAL_PATH/bin/nginx/conf/conf.d"
 curl -sSL -o filebrowser.conf  https://raw.githubusercontent.com/tusui-7/node/refs/heads/main/conf.d/filebrowser.conf
+sed -i "s|HOME|$LOCAL_PATH|g" "filebrowser.conf"
+sed -i "s|443|$PORT|g"        "filebrowser.conf"
+sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" "filebrowser.conf"
+
 
 fi
 
@@ -223,6 +231,9 @@ fi
 if [ -d "$LOCAL_PATH/bin/nginx/conf/conf.d" ];then
 cd "$LOCAL_PATH/bin/nginx/conf/conf.d"
 curl -sSL -o openlist.conf  https://raw.githubusercontent.com/tusui-7/node/refs/heads/main/conf.d/openlist.conf
+sed -i "s|HOME|$LOCAL_PATH|g" "openlist.conf"
+sed -i "s|443|$PORT|g"        "openlist.conf"
+sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" "openlist.conf"
 
 fi
 
@@ -267,6 +278,9 @@ fi
 if [ -d "$LOCAL_PATH/bin/nginx/conf/conf.d" ];then
 cd "$LOCAL_PATH/bin/nginx/conf/conf.d"
 curl -sSL -o easytier.conf  https://raw.githubusercontent.com/tusui-7/node/refs/heads/main/conf.d/easytier.conf
+sed -i "s|HOME|$LOCAL_PATH|g" "easytier.conf"
+sed -i "s|443|$PORT|g"        "easytier.conf"
+sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" "easytier.conf"
 
 fi
 
