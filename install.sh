@@ -243,7 +243,7 @@ sed -i "$SED_FLAGS/a  \
   binaryPath: \"HOME/bin/openlist/openlist\", \n  \
   args: [\"server\", \"--data=HOME/bin/openlist\"], \n  \
   mode: \"inherit\" \n  \
- }, \n  " ""$INDEX_JS""
+ }, \n  " "$INDEX_JS"
 
 sed -i "s|HOME|$LOCAL_PATH|g" "$INDEX_JS"
 
