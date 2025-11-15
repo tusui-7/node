@@ -6,6 +6,7 @@ DYNV6_DNS="${DYNV6_DNS:-a.com}"
 
 LOCAL_PATH="$PWD"
 ECC="_ecc"
+INDEX_JS="index.js"
 SED_FLAGS="/\/\/SED_ADD_INSERT"
 
 
@@ -13,16 +14,23 @@ SED_FLAGS="/\/\/SED_ADD_INSERT"
 function  ACME()
 {
 
+EXE_NAME="acme"
 cd  "$LOCAL_PATH/"
+if grep -q "$EXE_NAME" "$INDEX_JS"; then
+echo "Found $EXE_NAME"
+else
+
 sed -i "$SED_FLAGS/a  \
   \  { \n  \
   name: \"acme\", \n  \
   binaryPath: \"bash\", \n  \
   args: [\"HOME/bin/acme/ssl.sh\"], \n  \
   mode: \"inherit\" \n  \
- }, \n  " "index.js"
+ }, \n  " "$INDEX_JS"
 
-sed -i "s|HOME|$LOCAL_PATH|g" index.js
+sed -i "s|HOME|$LOCAL_PATH|g" "$INDEX_JS"
+
+fi
 
 
 # acme.sh
@@ -45,7 +53,7 @@ chmod +x "./ssl.sh"
 
 fi
 
-echo "acme is ok"
+echo "$EXE_NAME is ok"
 
 }
 
@@ -54,16 +62,22 @@ echo "acme is ok"
 function  NGINX()
 {
 
+EXE_NAME="nginx"
 cd  "$LOCAL_PATH/"
+if grep -q "$EXE_NAME" "$INDEX_JS"; then
+echo "Found $EXE_NAME"
+else
+
 sed -i "$SED_FLAGS/a  \
   \  { \n  \
   name: \"nginx\", \n  \
   binaryPath: \"bash\", \n  \
   args: [\"HOME/bin/nginx/sbin/nginx.sh\"], \n  \
   mode: \"inherit\" \n  \
- }, \n  " "index.js"
+ }, \n  " "$INDEX_JS"
 
-sed -i "s|HOME|$LOCAL_PATH|g" index.js
+sed -i "s|HOME|$LOCAL_PATH|g" "$INDEX_JS"
+fi
 
 
 # nginx
@@ -97,7 +111,7 @@ cp -f "$LOCAL_PATH/bin/acme/ssl/$DYNV6_DNS$ECC/fullchain.cer" "$LOCAL_PATH/bin/n
 cp -f "$LOCAL_PATH/bin/acme/ssl/$DYNV6_DNS$ECC/$DYNV6_DNS.key" "$LOCAL_PATH/bin/nginx/conf/ssl/$DYNV6_DNS.key"
 
 
-echo "nginx is ok"
+echo "$EXE_NAME is ok"
 
 }
 
@@ -106,16 +120,24 @@ echo "nginx is ok"
 function  NAVIDROME()
 {
 
+EXE_NAME="navidrome"
 cd  "$LOCAL_PATH/"
+if grep -q "$EXE_NAME" "$INDEX_JS"; then
+echo "Found $EXE_NAME"
+else
+
 sed -i "$SED_FLAGS/a  \
   \  { \n  \
   name: \"navidrome\", \n  \
   binaryPath: \"HOME/bin/navidrome/navidrome\", \n  \
   args: [\"--configfile\", \"HOME/bin/navidrome/navidrome.toml\"], \n  \
   mode: \"inherit\" \n  \
- }, \n  " "index.js"
+ }, \n  " "$INDEX_JS"
 
-sed -i "s|HOME|$LOCAL_PATH|g" index.js
+sed -i "s|HOME|$LOCAL_PATH|g" "$INDEX_JS"
+
+fi
+
 
 # navidrome
 mkdir -p "$LOCAL_PATH/file/music"
@@ -146,7 +168,7 @@ sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" "navidrome.conf"
 
 fi
 
-echo "navidrome is ok"
+echo "$EXE_NAME is ok"
 
 }
 
@@ -158,16 +180,24 @@ echo "navidrome is ok"
 function  FILEBROWSER()
 {
 
+EXE_NAME="filebrowser"
 cd  "$LOCAL_PATH/"
+if grep -q "$EXE_NAME" "$INDEX_JS"; then
+echo "Found $EXE_NAME"
+else
+
 sed -i "$SED_FLAGS/a  \
   \  { \n  \
   name: \"filebrowser\", \n  \
   binaryPath: \"HOME/bin/filebrowser/filebrowser\", \n  \
   args: [\"-c\", \"HOME/bin/filebrowser/.config.json\"], \n  \
   mode: \"inherit\" \n  \
- }, \n  " "index.js"
+ }, \n  " "$INDEX_JS"
 
-sed -i "s|HOME|$LOCAL_PATH|g" index.js
+sed -i "s|HOME|$LOCAL_PATH|g" "$INDEX_JS"
+
+fi
+
 
 mkdir -p "$LOCAL_PATH/bin/filebrowser"
 cd "$LOCAL_PATH/bin/filebrowser"
@@ -190,10 +220,9 @@ sed -i "s|HOME|$LOCAL_PATH|g" "filebrowser.conf"
 sed -i "s|443|$PORT|g"        "filebrowser.conf"
 sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" "filebrowser.conf"
 
-
 fi
 
-echo "filebrowser is ok"
+echo "$EXE_NAME is ok"
 
 }
 
@@ -202,16 +231,23 @@ echo "filebrowser is ok"
 function  OPENLIST()
 {
 
+EXE_NAME="openlist"
 cd  "$LOCAL_PATH/"
+if grep -q "$EXE_NAME" "$INDEX_JS"; then
+echo "Found $EXE_NAME"
+else
+
 sed -i "$SED_FLAGS/a  \
   \  { \n  \
   name: \"openlist\", \n  \
   binaryPath: \"HOME/bin/openlist/openlist\", \n  \
   args: [\"server\", \"--data=HOME/bin/openlist\"], \n  \
   mode: \"inherit\" \n  \
- }, \n  " "index.js"
+ }, \n  " ""$INDEX_JS""
 
-sed -i "s|HOME|$LOCAL_PATH|g" index.js
+sed -i "s|HOME|$LOCAL_PATH|g" "$INDEX_JS"
+
+fi
 
 
 mkdir -p "$LOCAL_PATH/bin/openlist"
@@ -238,7 +274,7 @@ sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" "openlist.conf"
 
 fi
 
-echo "openlist is ok"
+echo "$EXE_NAME is ok"
 
 }
 
@@ -247,16 +283,23 @@ echo "openlist is ok"
 function  EASYTIER()
 {
 
+EXE_NAME="easytier"
 cd  "$LOCAL_PATH/"
+if grep -q "$EXE_NAME" "$INDEX_JS"; then
+echo "Found $EXE_NAME"
+else
+
 sed -i "$SED_FLAGS/a  \
   \  { \n  \
   name: \"easytier\", \n  \
   binaryPath: \"bash\", \n  \
   args: [\"HOME/bin/easytier/easytier.sh\"], \n  \
   mode: \"inherit\" \n  \
- }, \n  " "index.js"
+ }, \n  " "$INDEX_JS"
 
-sed -i "s|HOME|$LOCAL_PATH|g" index.js
+sed -i "s|HOME|$LOCAL_PATH|g" "$INDEX_JS"
+
+fi
 
 
 mkdir -p "$LOCAL_PATH/bin/easytier"
@@ -285,7 +328,7 @@ sed -i "s|DYNV6_DNS|$DYNV6_DNS|g" "easytier.conf"
 
 fi
 
-echo "easytier is ok"
+echo "$EXE_NAME is ok"
 
 }
 
@@ -295,16 +338,23 @@ echo "easytier is ok"
 function  HBBR()
 {
 
+EXE_NAME="easytier"
 cd  "$LOCAL_PATH/"
+if grep -q "$EXE_NAME" "$INDEX_JS"; then
+echo "Found $EXE_NAME"
+else
+
 sed -i "$SED_FLAGS/a  \
   \  { \n  \
   name: \"hbbr\", \n  \
   binaryPath: \"HOME/bin/hbb/hbbr\", \n  \
   args: [\"-p\", \"21117\"], \n  \
   mode: \"inherit\" \n  \
- }, \n  " "index.js"
+ }, \n  " "$INDEX_JS"
 
-sed -i "s|HOME|$LOCAL_PATH|g" index.js
+sed -i "s|HOME|$LOCAL_PATH|g" "$INDEX_JS"
+
+fi
 
 
 mkdir -p "$LOCAL_PATH/bin/hbb"
@@ -405,7 +455,7 @@ if [ "$HBBR_FLAG" == "true" ];then
 HBBR
 
 cd "$LOCAL_PATH"
-sed -i "s|21117|$PORT|g" index.js
+sed -i "s|21117|$PORT|g" "$INDEX_JS"
 
 fi
 
