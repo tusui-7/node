@@ -35,7 +35,7 @@ mv acme.sh-master/*  .
 rm -rf  acme.sh-master
 rm acme.tar.gz
 
-./acme.sh --set-default-ca --issue --server letsencrypt --home "./ssl" -d "$DYNV6_DNS" -d "*.DYNV6_DNS" --dns dns_dynv6  --debug  --force
+./acme.sh --set-default-ca --issue --server letsencrypt --home "./ssl" -d "$DYNV6_DNS" -d "*.$DYNV6_DNS" --dns dns_dynv6  --debug  --force
 
 fi
 
