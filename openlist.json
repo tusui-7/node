@@ -11,7 +11,7 @@
     "user": "",
     "password": "",
     "name": "",
-    "db_file": "HMOE/bin/openlist/data/data.db",
+    "db_file": "HOME/bin/openlist/data/data.db",
     "table_prefix": "x_",
     "ssl_mode": "",
     "dsn": ""
@@ -32,12 +32,12 @@
     "unix_file_perm": "",
     "enable_h2c": false
   },
-  "temp_dir": "HMOE/bin/openlist/data/temp",
-  "bleve_dir": "HMOE/bin/openlist/data/bleve",
+  "temp_dir": "HOME/bin/openlist/data/temp",
+  "bleve_dir": "HOME/bin/openlist/data/bleve",
   "dist_dir": "",
   "log": {
     "enable": true,
-    "name": "HMOE/bin/openlist/data/log/log.log",
+    "name": "HOME/bin/openlist/data/log/log.log",
     "max_size": 50,
     "max_backups": 30,
     "max_age": 28,
