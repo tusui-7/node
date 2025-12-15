@@ -390,7 +390,7 @@ echo "PUBLIC_IP is : $PUBLIC_IP"
 sleep 2
 RESULT=$(curl --silent "https://ipv4.dynv6.com/api/update?zone=$DYNV6_DNS&ipv4=8.8.8.8&token=$DYNV6_TOKEN")
 echo "$RESULT"
-if [ "$RESULT" == "addresses updated" ];then
+if [[ "$RESULT" == "addresses updated" || "$RESULT" == "addresses unchanged" ]];then
 
 ACME
 NGINX
